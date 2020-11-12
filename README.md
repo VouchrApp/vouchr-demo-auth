@@ -45,10 +45,10 @@ alphanumeric chracters
 3. Choose the most appropriate option between:
   * modify `MyCustomerService.java` to retrieve User Details from a client's bearer token - assuming Bearer Token authentication 
     via the Authorization header
-  * modify the standard Spring `SecurityConfig.java` to make sure the user is authorized via some other manner consistent with
+  * **OR** modify the standard Spring `SecurityConfig.java` to make sure the user is authorized via some other manner consistent with
     your organization
-  * for demonstration purpsoses only, switch `MyCustomerService.IGNORE_TOKEN_RETURN_RANDOM_USER` to `true`  (** not suitable 
-  for production use **) 
+  * **OR** for demonstration purpsoses only, switch `MyCustomerService.IGNORE_TOKEN_RETURN_RANDOM_USER` to `true`  (**not suitable 
+  for production use**) 
 
 4. Modify `VouchrJwtService.LOAD_PRIVATE_KEY` to `true` to acknowledge that you're storing and protecting your private
   key in a way consistent with your organization's policies and standards;
@@ -85,7 +85,7 @@ example response:
 }
 ```
 
-Now, when constructing the link for the Vouchr create experience, you can add the above token to the urk as #tkn=<idToken> to
+Now, when constructing the link for the Vouchr create experience, you can add the above token to the urk as `#tkn=<idToken>` to
 grant limited-time access.
 
 ## Copyright
