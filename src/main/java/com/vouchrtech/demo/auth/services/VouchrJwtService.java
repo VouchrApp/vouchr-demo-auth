@@ -19,33 +19,37 @@ import java.io.InputStreamReader;
 import java.security.GeneralSecurityException;
 import java.security.interfaces.RSAPrivateKey;
 import java.util.Date;
-import java.util.logging.Logger;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
+
+/*
+
+TODO Update this class to access your private key securely
+
+Update this class to retrieve your private key in a way that corresponds to your
+organizations policies.
+
+Or set LOAD_PRIVATE_KEY to true to load the private key from your filesystem for
+development purposes, acknowledging any production deployment will meet policies.
+
+*/
 
 @Service
 public class VouchrJwtService {
 
-    private static final Logger LOGGER = Logger.getLogger(VouchrJwtService.class.getName());
-
+    private static final boolean LOAD_PRIVATE_KEY = false;
     @Value("${vouchr.jwt.key.pem:file:privkey.pem}")
     private Resource jwtKeyPem;
-
     @Value("${vouchr.jwt.exp.seconds:900}")
     private Long expSeconds;
-
     @Value("${vouchr.jwt.sub.hash.key}")
     private String subHashKey;
-
-    // by changing the following line I acknowledge responsibility to protect and properly store my private key
-    // in compliance with my organization's policies
-    private static final boolean LOAD_PRIVATE_KEY = false;
 
     public String get(String sub) throws GeneralSecurityException {
         try {
 
             // this hashes the sub so the internal customer id will not get transmitted to vouchr, while maintaining
-            // a constnat id for the user from one login to the next.
+            // a constant id for the user from one login to the next.
             String hashedSub = Util.base64Hmac256(sub, subHashKey);
 
             RSAPrivateKey rsaKey = getRSAKey();
@@ -75,10 +79,10 @@ public class VouchrJwtService {
     // please note, it is up to the partner to store and protect this key in a way that corresponds to their
     // security policies.
     private RSAPrivateKey getRSAKey() throws JOSEException, IOException {
-        if(!LOAD_PRIVATE_KEY) {
+        if (!LOAD_PRIVATE_KEY) {
             throw new IOException("Loading private key disabled, see VouchrJwtService.java");
         }
-        try (InputStreamReader inputStreamReader = new InputStreamReader(jwtKeyPem.getInputStream(), UTF_8)){
+        try (InputStreamReader inputStreamReader = new InputStreamReader(jwtKeyPem.getInputStream(), UTF_8)) {
             String pemContents = FileCopyUtils.copyToString(inputStreamReader);
 
             return JWK.parseFromPEMEncodedObjects(pemContents).toRSAKey().toRSAPrivateKey();

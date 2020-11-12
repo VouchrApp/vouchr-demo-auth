@@ -10,13 +10,24 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.logging.Logger;
 
+/*
+
+TODO Update or replace this class to retrieve the UserDetails from the customer's session
+
+Update this class to retrieve your private key in a way that corresponds to your
+organization's policies.
+
+Or set IGNORE_TOKEN_RETURN_RANDOM_USER to true to ignore the authentication token and randomly
+return a user id.  Setting to true acknowledges this is only suitable for development
+and testing purposes.
+
+*/
+
 @Component
 public class MyCustomerService {
 
     private static final Logger LOGGER = Logger.getLogger(MyCustomerService.class.getName());
 
-    // by changing the following line I acknowledge responsibility to return a proper UserDetails object from
-    // the client's already authorized session rather than an unverified randomized user contained here
     private static final boolean IGNORE_TOKEN_RETURN_RANDOM_USER = false;
 
     public Optional<UserDetails> findByToken(String token) {
