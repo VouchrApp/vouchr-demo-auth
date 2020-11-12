@@ -1,7 +1,7 @@
 # vouchr-demo-auth
 [![License](http://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
 
-Minimal [Spring Boot](http://projects.spring.io/spring-boot/) based app for generating vouchr jwt credentials.
+Minimal [Spring Boot](http://projects.spring.io/spring-boot/) based app for generating Vouchr JWT credentials.
 
 ## Requirements
 
@@ -12,7 +12,7 @@ For building and running the application you need:
 
 ## Prerequisites
 
-1. Create a private key used for signing your jwt, and a public key that will be shared with Vouchr.  Please do this in
+1. Create a private key used for signing your JWT, and a public key that will be shared with Vouchr.  Please do this in
 a way that complies with your organization's policies and standards.
 
 For demonstration purposes, using openssl you can create a private key with openssl using:
@@ -37,8 +37,8 @@ vouchr.jwt.sub.hash.key=
 
 * `vouchr.jwt.key.pem` - the location of your private key stored and protected as per organization policies
 * `vouchr.jwt.key.expiry.seconds` - the number of seconds the jwt should remain valid.  This only needs to
-span the time from a user being given a link to the vouchr experience and them following the link
-* `vouchr.jwt.sub.hash.key` - used to hash the customer id in a way that the customer id remains hidden to the vouchr
+span the time from a user being given a link to the Vouchr experience and them following the link
+* `vouchr.jwt.sub.hash.key` - used to hash the customer id in a way that the customer id remains hidden to the Vouchr
 system while still preserving an id from one access to the next.  We recommend a randomized string of at least 32 
 alphanumeric chracters
 
@@ -66,9 +66,9 @@ Alternatively you can use the [Spring Boot Maven plugin](https://docs.spring.io/
 mvn spring-boot:run
 ```
 
-## Retrieve a jwt token
+## Retrieve a JWT token
 
-create a POST request to /vouchr/jwt and retrieve your jwt / idToken from the result
+create a POST request to /vouchr/jwt and retrieve your JWT / idToken from the result
 
 ```
 curl -X POST \
