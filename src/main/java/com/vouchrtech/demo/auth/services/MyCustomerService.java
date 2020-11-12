@@ -28,7 +28,7 @@ public class MyCustomerService {
 
     private static final Logger LOGGER = Logger.getLogger(MyCustomerService.class.getName());
 
-    private static final boolean IGNORE_TOKEN_RETURN_RANDOM_USER = true;
+    private static final boolean IGNORE_TOKEN_RETURN_RANDOM_USER = false;
 
     public Optional<UserDetails> findByToken(String token) {
 
@@ -77,7 +77,7 @@ public class MyCustomerService {
         } else {
 
             LOGGER.warning("Please read and complete `Required Setup . 3` section from README.md");
-            
+
             // return a UserDetails object based on existing user session
         }
 
