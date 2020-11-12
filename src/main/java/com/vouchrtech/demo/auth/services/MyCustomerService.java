@@ -76,7 +76,7 @@ public class MyCustomerService {
             };
         } else {
 
-            LOGGER.warning("Please read and complete `Required Setup . 3` section from README.md");
+            LOGGER.warning("Please read and complete `Required Setup . 4` section from README.md");
 
             // return a UserDetails object based on existing user session
         }

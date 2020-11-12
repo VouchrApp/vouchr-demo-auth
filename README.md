@@ -27,7 +27,10 @@ and from that create a public key for distribution with:
 openssl rsa -in privkey.pem -pubout > key.pub
 ```
 
-2. Modify `src/main/resources/application.properties` to include
+2. Modify `VouchrJwtService.LOAD_PRIVATE_KEY` to `true` to acknowledge that you're storing and protecting your private
+  key in a way consistent with your organization's policies and standards;
+
+3. Modify `src/main/resources/application.properties` to include
 
 ```
 vouchr.jwt.key.pem=file:privkey.pem
@@ -42,7 +45,7 @@ span the time from a user being given a link to the Vouchr experience and them f
 system while still preserving an id from one access to the next.  We recommend a randomized string of at least 32 
 alphanumeric chracters
 
-3. Choose the most appropriate option between:
+4. Choose the most appropriate option between:
   * modify `MyCustomerService.java` to retrieve User Details from a client's bearer token - assuming Bearer Token authentication 
     via the Authorization header
   * **OR** modify the standard Spring `SecurityConfig.java` to make sure the user is authorized via some other manner consistent with
@@ -50,8 +53,6 @@ alphanumeric chracters
   * **OR** for demonstration purposes only, switch `MyCustomerService.IGNORE_TOKEN_RETURN_RANDOM_USER` to `true`  (**not suitable 
   for production use**) 
 
-4. Modify `VouchrJwtService.LOAD_PRIVATE_KEY` to `true` to acknowledge that you're storing and protecting your private
-  key in a way consistent with your organization's policies and standards;
   
 
 
