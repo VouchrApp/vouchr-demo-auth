@@ -10,7 +10,7 @@ For building and running the application you need:
 - [JDK 1.8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 - [Maven 3](https://maven.apache.org)
 
-## Prerequisites
+## Required Setup
 
 1. Create a private key used for signing your JWT, and a public key that will be shared with Vouchr.  Please do this in
 a way that complies with your organization's policies and standards.
