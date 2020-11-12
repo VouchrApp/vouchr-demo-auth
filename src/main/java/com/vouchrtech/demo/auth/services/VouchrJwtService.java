@@ -38,6 +38,7 @@ development purposes, acknowledging any production deployment will meet policies
 public class VouchrJwtService {
 
     private static final boolean LOAD_PRIVATE_KEY = false;
+
     @Value("${vouchr.jwt.key.pem:file:privkey.pem}")
     private Resource jwtKeyPem;
     @Value("${vouchr.jwt.exp.seconds:900}")
@@ -80,7 +81,7 @@ public class VouchrJwtService {
     // security policies.
     private RSAPrivateKey getRSAKey() throws JOSEException, IOException {
         if (!LOAD_PRIVATE_KEY) {
-            throw new IOException("Loading private key disabled, see VouchrJwtService.java");
+            throw new IOException("Please read and complete `Required Setup` section from README.md");
         }
         try (InputStreamReader inputStreamReader = new InputStreamReader(jwtKeyPem.getInputStream(), UTF_8)) {
             String pemContents = FileCopyUtils.copyToString(inputStreamReader);

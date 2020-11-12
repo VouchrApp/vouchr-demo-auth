@@ -60,7 +60,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     com.vouchrtech.demo.auth.config.AuthenticationFilter authenticationFilter() throws Exception {
         final com.vouchrtech.demo.auth.config.AuthenticationFilter filter = new com.vouchrtech.demo.auth.config.AuthenticationFilter(PROTECTED_URLS);
         filter.setAuthenticationManager(authenticationManager());
-        //filter.setAuthenticationSuccessHandler(successHandler());
         return filter;
     }
 

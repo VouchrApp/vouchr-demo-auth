@@ -75,6 +75,9 @@ public class MyCustomerService {
                 }
             };
         } else {
+
+            LOGGER.info("Please read and complete `Required Setup` section from README.md");
+
             if(token == null) {
                 LOGGER.warning("No Bearer token found");
             }
