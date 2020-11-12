@@ -27,11 +27,10 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 
 TODO Update this class to access your private key securely
 
-Update this class to retrieve your private key in a way that corresponds to your
-organizations policies.
+Update this class to retrieve your private key in a way that corresponds to your policies and standards.
 
-Or set LOAD_PRIVATE_KEY to true to load the private key from your filesystem for
-development purposes, acknowledging any production deployment will meet policies.
+Or set LOAD_PRIVATE_KEY to true to load the private key from your filesystem acknowledging any deployment will
+meet your organizations policies.
 
 */
 
