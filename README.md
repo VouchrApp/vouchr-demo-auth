@@ -47,7 +47,7 @@ alphanumeric chracters
     via the Authorization header
   * **OR** modify the standard Spring `SecurityConfig.java` to make sure the user is authorized via some other manner consistent with
     your organization
-  * **OR** for demonstration purpsoses only, switch `MyCustomerService.IGNORE_TOKEN_RETURN_RANDOM_USER` to `true`  (**not suitable 
+  * **OR** for demonstration purposes only, switch `MyCustomerService.IGNORE_TOKEN_RETURN_RANDOM_USER` to `true`  (**not suitable 
   for production use**) 
 
 4. Modify `VouchrJwtService.LOAD_PRIVATE_KEY` to `true` to acknowledge that you're storing and protecting your private
