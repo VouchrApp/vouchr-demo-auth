@@ -31,12 +31,12 @@ openssl rsa -in privkey.pem -pubout > key.pub
 
 ```
 vouchr.jwt.key.pem=file:privkey.pem
-vouchr.jwt.key.expiry.seconds=900
+vouchr.jwt.key.exp.seconds=900
 vouchr.jwt.sub.hash.key=
 ```
 
 * `vouchr.jwt.key.pem` - the location of your private key stored and protected as per organization policies
-* `vouchr.jwt.key.expiry.seconds` - the number of seconds the jwt should remain valid.  This only needs to
+* `vouchr.jwt.key.expiry.seconds` - the number of seconds the JWT should remain valid.  This only needs to
 span the time from a user being given a link to the Vouchr experience and them following the link
 * `vouchr.jwt.sub.hash.key` - used to hash the customer id in a way that the customer id remains hidden to the Vouchr
 system while still preserving an id from one access to the next.  We recommend a randomized string of at least 32 
