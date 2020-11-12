@@ -9,6 +9,7 @@ import com.nimbusds.jose.jwk.JWK;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
 import com.vouchrtech.demo.auth.util.Util;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,7 @@ import java.io.InputStreamReader;
 import java.security.GeneralSecurityException;
 import java.security.interfaces.RSAPrivateKey;
 import java.util.Date;
+import java.util.logging.Logger;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
@@ -37,6 +39,8 @@ development purposes, acknowledging any production deployment will meet policies
 @Service
 public class VouchrJwtService {
 
+    private static final Logger LOGGER = Logger.getLogger(VouchrJwtService.class.getName());
+
     private static final boolean LOAD_PRIVATE_KEY = false;
 
     @Value("${vouchr.jwt.key.pem:file:privkey.pem}")
@@ -48,6 +52,9 @@ public class VouchrJwtService {
 
     public String get(String sub) throws GeneralSecurityException {
         try {
+            if(StringUtils.isBlank(subHashKey)) {
+                throw new IOException("Please read and complete `Required Setup . 2` section from README.md");
+            }
 
             // this hashes the sub so the internal customer id will not get transmitted to vouchr, while maintaining
             // a constant id for the user from one login to the next.
@@ -81,7 +88,7 @@ public class VouchrJwtService {
     // security policies.
     private RSAPrivateKey getRSAKey() throws JOSEException, IOException {
         if (!LOAD_PRIVATE_KEY) {
-            throw new IOException("Please read and complete `Required Setup` section from README.md");
+            throw new IOException("Please read and complete `Required Setup . 4` section from README.md");
         }
         try (InputStreamReader inputStreamReader = new InputStreamReader(jwtKeyPem.getInputStream(), UTF_8)) {
             String pemContents = FileCopyUtils.copyToString(inputStreamReader);

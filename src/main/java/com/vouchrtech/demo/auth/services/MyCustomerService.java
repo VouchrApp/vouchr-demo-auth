@@ -28,7 +28,7 @@ public class MyCustomerService {
 
     private static final Logger LOGGER = Logger.getLogger(MyCustomerService.class.getName());
 
-    private static final boolean IGNORE_TOKEN_RETURN_RANDOM_USER = false;
+    private static final boolean IGNORE_TOKEN_RETURN_RANDOM_USER = true;
 
     public Optional<UserDetails> findByToken(String token) {
 
@@ -76,11 +76,8 @@ public class MyCustomerService {
             };
         } else {
 
-            LOGGER.info("Please read and complete `Required Setup` section from README.md");
-
-            if(token == null) {
-                LOGGER.warning("No Bearer token found");
-            }
+            LOGGER.warning("Please read and complete `Required Setup . 3` section from README.md");
+            
             // return a UserDetails object based on existing user session
         }
 
