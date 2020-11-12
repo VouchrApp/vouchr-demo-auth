@@ -85,7 +85,7 @@ example response:
 }
 ```
 
-Now, when constructing the link for the Vouchr create experience, you can add the above token to the urk as `#tkn=<idToken>` to
+Now, when constructing the link for the Vouchr create experience, you can add the above token to the url as `#tkn=<idToken>` to
 grant limited-time access.
 
 ## Copyright
